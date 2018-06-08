@@ -15,6 +15,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/admin', 'AdminController@index');
+
+
+Route::resource('department', 'DepartmentController');
+
+
+// Route::get('/admin',function(){
+//     return view('admin.pages.dashboard');
+// });
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
