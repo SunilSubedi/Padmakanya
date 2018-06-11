@@ -18,7 +18,11 @@ Route::get('/', function () {
 Route::get('/admin', 'AdminController@index');
 
 
-Route::resource('department', 'DepartmentController');
+
+Route::prefix('admin')->group(function () {
+   Route::resource('department', 'DepartmentController');
+   Route::resource('faculty', 'FacultyController');
+});
 
 
 // Route::get('/admin',function(){
