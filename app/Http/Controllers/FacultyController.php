@@ -36,6 +36,12 @@ class FacultyController extends Controller
      */
     public function store(Request $request)
     {
+        $validateData =$request->validate([
+            'name'=>'required|unique:faculties',
+            'address'=>'required',
+            'designation'=>'required',
+        ]);
+
         $faculty = new App\Faculty();
         $faculty->name = $request->name;
         $faculty->address = $request->address;
@@ -43,7 +49,7 @@ class FacultyController extends Controller
         $faculty->designation =$request->designation;
         $faculty->save();
 
-        return redirect()->route('faculty.index');
+        return redirect()->route('faculty.create')->with('status', 'Faculty Added');
     }
 
     /**

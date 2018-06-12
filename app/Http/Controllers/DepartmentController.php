@@ -36,16 +36,17 @@ class DepartmentController extends Controller
      */
     public function store(Request $request)
     {
-        $depatment = new App\Department();
-        $depatment->name = $request->name;
-        $depatment->slug = $request->slug;
-        $depatment->save();
-        
+        $validateData =$request->validate([
+            'name'=>'required|unique:departments',
+            'slug'=>'required|unique:departments',
+        ]);
+        $department = new App\Department();
+        $department->name = $request->name;
+        $department->slug = $request->slug;
+        $department->save();
     
-    return redirect()->route('department.index');
-    ;
+         return redirect('admin/department/create')->with('status', 'Department Added');   
         
-          
     }
 
     /**
