@@ -37,12 +37,6 @@ class FacultyController extends Controller
      */
     public function store(Request $request)
     {
-        $validateData =$request->validate([
-            'name'=>'required|unique:faculties',
-            'address'=>'required',
-            'designation'=>'required',
-        ]);
-
         $faculty = new App\Faculty();
         $faculty->name = $request->name;
         $faculty->address = $request->address;
