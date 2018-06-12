@@ -100,6 +100,9 @@ class FacultyController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $faculty = App\Faculty::find($id);
+        $faculty->delete();
+
+        return redirect()->route('faculty.index');
     }
 }

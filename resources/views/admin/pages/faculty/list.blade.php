@@ -25,8 +25,17 @@
       <td>{{ $faculty->address }}</td>
       <td>{{ $faculty->contact }}</td>
       <td>{{ $faculty->designation }}</td>
-      <td><a href="{{ route('faculty.edit',$faculty->id)}}">Edit</a></td>
-      <td><a href="">Delete</a></td>
+     
+      <td>
+          <a  href="{{ route('faculty.edit',$faculty->id) }}" class="btn btn-info">Edit</a>
+      </td>
+      <td>
+      <form action="{{ action('FacultyController@destroy', $faculty['id'])}}" method="post">
+            @csrf
+            <input name="_method" type="hidden" value="DELETE">
+            <button class="btn btn-danger" type="submit">Delete</button>
+          </form>
+    </td>
     </tr>
     @endforeach
   </tbody>
