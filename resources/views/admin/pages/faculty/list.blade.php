@@ -7,12 +7,8 @@
 <form method="POST" action="{{ route('faculty.store')}}" enctype="multipart/form-data">
     @csrf
 
-<<<<<<< HEAD
     {{ $faculties->links() }}
     <table class="table">
-=======
-    <table class="table  text-white font-weight-bold">
->>>>>>> cedfb5205aeb0e540023205b8dffbcc5ec52c3d1
   <thead>
     <tr class="bg-success text-dark">
       <th scope="col">ID</th>
@@ -51,13 +47,8 @@
     @endforeach
   </tbody>
 </table>
-<<<<<<< HEAD
 {{ $faculties->links() }}
     <button type="submit" class="btn btn-primary">Submit</button>
-=======
-   
-
->>>>>>> cedfb5205aeb0e540023205b8dffbcc5ec52c3d1
   </form>
 </div>
 
