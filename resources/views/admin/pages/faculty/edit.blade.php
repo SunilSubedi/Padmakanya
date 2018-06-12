@@ -2,7 +2,7 @@
 @section('content')
 <div class="container-fluid" id="app">
     <h2 class="text-center">Edit Faculties</h2>
-<form method="POST" action="{{ route('faculty.update',$faculty->id)}}">
+<form method="POST" action="{{ route('faculty.update',$faculty->id)}}" enctype="multipart/form-data">
     @method('PUT')
     @csrf
 
@@ -18,6 +18,11 @@
 
       <label>Designation</label>
       <input type="text" class="form-control" aria-describedby="emailHelp" placeholder="Enter the Designation/Position" name="designation" value="{{ $faculty->designation }}">
+
+    <label for="exampleInputFile">Image</label>
+    <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp" name="image">
+    <small id="fileHelp" class="form-text text-muted">Download the image of the member mention above ...</small>
+
 
     </div>
    

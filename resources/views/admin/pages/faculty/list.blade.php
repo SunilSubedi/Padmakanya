@@ -1,22 +1,27 @@
 @extends('admin.layouts.admin')
 @section('content')
 <div class="container-fluid" id="app">
-    <h2 class="text-center">Faculties</h2>
-<form method="POST" action="{{ route('faculty.store')}}">
+    <br>
+    <h2 class="text-center bg-success font-weight-bold text-dark">Faculty Members</h2>
+    <br>
+<form method="POST" action="{{ route('faculty.store')}}" enctype="multipart/form-data">
     @csrf
 
-    <table class="table">
+    <table class="table  text-white font-weight-bold">
   <thead>
-    <tr>
+    <tr class="bg-success text-dark">
       <th scope="col">ID</th>
       <th scope="col">Name</th>
       <th scope="col">Address</th>
       <th scope="col">Contact</th>
-      <th scope="col1">Designation</th>
+      <th scope="col">Designation</th>
+      <th scope="col">Image</th>
+      <th scope="col">Edit</th>
+      <th scope="col">Delete</th>
      
     </tr>
   </thead>
-  <tbody>
+  <tbody class="bg-success">
   @foreach($faculties as $faculty)
     <tr>
       
@@ -25,6 +30,7 @@
       <td>{{ $faculty->address }}</td>
       <td>{{ $faculty->contact }}</td>
       <td>{{ $faculty->designation }}</td>
+      <td><img class= "w-25 h-25" src="{{asset('images/'.$faculty->image)}}"></td>
      
       <td>
           <a  href="{{ route('faculty.edit',$faculty->id) }}" class="btn btn-info">Edit</a>
@@ -41,7 +47,7 @@
   </tbody>
 </table>
    
-      
+
   </form>
 </div>
 

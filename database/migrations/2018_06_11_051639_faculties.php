@@ -19,6 +19,7 @@ class Faculties extends Migration
             $table->string('address',50);
             $table->string('contact',25);
             $table->string('designation',25);
+            $table->string('image',255);
             $table->timestamps();
         });
     }
