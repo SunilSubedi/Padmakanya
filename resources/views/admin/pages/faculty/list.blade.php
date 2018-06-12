@@ -30,7 +30,7 @@
           <a  href="{{ route('faculty.edit',$faculty->id) }}" class="btn btn-info">Edit</a>
       </td>
       <td>
-      <form action="{{ action('FacultyController@destroy', $faculty['id'])}}" method="post">
+      <form action="{{ action('FacultyController@destroy', $faculty['id'])}}" method="post" onsubmit= 'return ConfirmDelete()'>
             @csrf
             <input name="_method" type="hidden" value="DELETE">
             <button class="btn btn-danger" type="submit">Delete</button>
@@ -41,8 +41,22 @@
   </tbody>
 </table>
    
-    <button type="submit" class="btn btn-primary">Submit</button>
+      
   </form>
 </div>
+
+
+<script>
+
+function ConfirmDelete()
+{
+var x = confirm("Are you sure you want to delete?");
+if (x)
+  return true;
+else
+  return false;
+}
+
+</script>
 
 @endsection
