@@ -2,6 +2,18 @@
 @section('content')
 <div class="container-fluid" id="app">
     <h2 class="text-center">Add Faculties</h2>
+    @foreach ($errors->all() as $message) 
+    <div class="alert alert-danger w-50" role="alert">    
+          <p class="">{{$message}}</p>
+    </div>
+    @endforeach
+    @if(session('status'))
+    <div class="alert alert-success">
+        {{ session('status') }}
+    </div>
+
+    @endif
+
 <form method="POST" action="{{ route('faculty.store')}}">
     @csrf
 
@@ -17,6 +29,10 @@
 
       <label>Designation</label>
       <input type="text" class="form-control" aria-describedby="emailHelp" placeholder="Enter the Designation/Position" name="designation">
+
+    <label for="exampleInputFile">Image</label>
+    <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp" name="image">
+    <small id="fileHelp" class="form-text text-muted">Download the image of the member mention above ...</small>
 
     </div>
    

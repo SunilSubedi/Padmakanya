@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App;
+use Image;
 
 class FacultyController extends Controller
 {
@@ -36,14 +37,31 @@ class FacultyController extends Controller
      */
     public function store(Request $request)
     {
+        $validateData =$request->validate([
+            'name'=>'required|unique:faculties',
+            'address'=>'required',
+            'designation'=>'required',
+        ]);
+
         $faculty = new App\Faculty();
         $faculty->name = $request->name;
         $faculty->address = $request->address;
         $faculty->contact =$request->contact;
         $faculty->designation =$request->designation;
+
+
+        if($request->hasfile('image'))
+        {
+           $name = $request->image;
+           $path= "images\\";
+           $filename = time().'.'. $name->getClientOriginalName();
+           $location = public_path($path.$filename);
+           Image::make($name)->resize(500,300)->save($location);
+           $faculty->image = $filename;
+        }
         $faculty->save();
 
-        return redirect()->route('faculty.index');
+        return redirect()->route('faculty.create')->with('status', 'Faculty Added');
     }
 
     /**
@@ -65,7 +83,10 @@ class FacultyController extends Controller
      */
     public function edit($id)
     {
-        //
+      $faculty = App\faculty::find($id);
+        
+      return view('admin.pages.faculty.edit')->with('faculty',$faculty);
+        
     }
 
     /**
@@ -77,7 +98,28 @@ class FacultyController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+       $faculty = App\faculty::find($id);
+
+       $faculty->name = $request->name;
+        $faculty->address = $request->address;
+        $faculty->contact =$request->contact;
+        $faculty->designation =$request->designation;
+        
+
+        if($request->hasfile('image'))
+        {
+           $name = $request->image;
+           $path= "images\\";
+           $filename = time().'.'. $name->getClientOriginalName();
+           $location = public_path($path.$filename);
+           Image::make($name)->resize(500,300)->save($location);
+           $faculty->image = $filename;
+        }
+
+        $faculty->save();
+
+        return redirect()->route('faculty.index');
+
     }
 
     /**
@@ -88,6 +130,9 @@ class FacultyController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $faculty = App\Faculty::find($id);
+        $faculty->delete();
+
+        return redirect()->route('faculty.index');
     }
 }
