@@ -41,6 +41,7 @@ class FacultyController extends Controller
             'name'=>'required|unique:faculties',
             'address'=>'required',
             'designation'=>'required',
+            'image'=> 'required',
         ]);
 
         $faculty = new App\Faculty();
