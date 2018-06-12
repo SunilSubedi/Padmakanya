@@ -3,6 +3,7 @@
 <div class="container-fluid" id="app">
     <h2 class="text-center">List Department</h2>
 
+    {{ $departments->links() }}
     <table class="table table-dark">
   <thead>
     <tr>
@@ -34,7 +35,7 @@
   </tbody>
 </table>
 
-
+{{ $departments->links() }}
 </div>
 
 <script>

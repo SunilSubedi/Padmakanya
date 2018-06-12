@@ -66,6 +66,21 @@
             </ul>
           </li>
 
+          <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Example Pages">
+            <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseExamplePagesn" data-parent="#exampleAccordion">
+              <i class="fa fa-fw fa-file"></i>
+              <span class="nav-link-text">Notice</span>
+            </a>
+            <ul class="sidenav-second-level collapse" id="collapseExamplePagesn">
+              <li>
+                <a href="{{ route('notice.index')}}">List Notice</a>
+              </li>
+              <li>
+                <a href="{{ route('notice.create')}}">Add Notice</a>
+              </li>
+            </ul>
+          </li>
+
         </ul>
         <ul class="navbar-nav ml-auto">
           <li class="nav-item dropdown">

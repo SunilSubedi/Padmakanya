@@ -22,6 +22,7 @@ Route::get('/admin', 'AdminController@index');
 Route::prefix('admin')->group(function () {
    Route::resource('department', 'DepartmentController');
    Route::resource('faculty', 'FacultyController');
+   Route::resource('notice','NoticeController');
 });
 
 
