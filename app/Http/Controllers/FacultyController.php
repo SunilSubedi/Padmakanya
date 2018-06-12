@@ -14,7 +14,7 @@ class FacultyController extends Controller
      */
     public function index()
     {
-        $faculties = App\Faculty::all();
+        $faculties = App\Faculty::paginate(3);
         return view('admin.pages.faculty.list')->with('faculties',$faculties);
     }
 

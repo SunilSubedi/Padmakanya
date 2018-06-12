@@ -1,9 +1,9 @@
 @extends('admin.layouts.admin')
 @section('content')
 <div class="container-fluid" id="app">
-    <h2 class="text-center">List Department</h2>
+    <h2 class="text-center">List Notice</h2>
 
-    {{ $departments->links() }}
+    {{ $notices->links() }}
     <table class="table table-dark">
   <thead>
     <tr>
@@ -15,16 +15,16 @@
     </tr>
   </thead>
   <tbody>
-      @foreach($departments as $department)
+      @foreach($notices as $notice)
     <tr>
-     <td>{{$department->id}}</td>
-      <td>{{$department->name}}</td>
-      <td>{{$department->slug}}</td>
+     <td>{{$notice->id}}</td>
+      <td>{{$notice->name}}</td>
+      <td>{{$notice->slug}}</td>
       <td>
-          <a  href="{{route('department.edit',$department->id)}}" class="btn btn-info">Edit</a>
+          <a  href="{{route('notice.edit',$notice->id)}}" class="btn btn-info">Edit</a>
       </td>
       <td>
-      <form action="{{action('DepartmentController@destroy', $department['id'])}}" method="post">
+      <form action="{{action('NoticeController@destroy', $notice['id'])}}" method="post">
             @csrf
             <input name="_method" type="hidden" value="DELETE">
             <button class="btn btn-danger" type="submit">Delete</button>
@@ -35,7 +35,7 @@
   </tbody>
 </table>
 
-{{ $departments->links() }}
+{{ $notices->links() }}
 </div>
 
 @endsection

@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App;
 
-class DepartmentController extends Controller
+class NoticeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,9 @@ class DepartmentController extends Controller
      */
     public function index()
     {
-        $department = App\Department::paginate(3);
-        return view('admin.pages.department.list')->with('departments',$department);
+        //
+        $notice = App\Notice::paginate(3);
+        return view('admin.pages.notice.list')->with('notices',$notice);
     }
 
     /**
@@ -25,7 +26,8 @@ class DepartmentController extends Controller
      */
     public function create()
     {
-        return view('admin.pages.department.add');
+        //
+        return view('admin.pages.notice.add');
     }
 
     /**
@@ -36,16 +38,8 @@ class DepartmentController extends Controller
      */
     public function store(Request $request)
     {
-        $depatment = new App\Department();
-        $depatment->name = $request->name;
-        $depatment->slug = $request->slug;
-        $depatment->save();
-        
-    
-    return redirect()->route('department.index');
-    ;
-        
-          
+       
+
     }
 
     /**
@@ -67,12 +61,7 @@ class DepartmentController extends Controller
      */
     public function edit($id)
     {
-
-        $department = App\Department::find($id);
-
-        
-        return view('admin.pages.department.edit')->with('department',$department);
-    
+        //
     }
 
     /**
@@ -84,13 +73,7 @@ class DepartmentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
-        $department = App\Department::find($id);
-        $department->name = $request->name;
-        $department->slug = $request->slug;
-        $department->save();
-
-        return redirect()->route('department.index');
+        //
     }
 
     /**
@@ -101,9 +84,6 @@ class DepartmentController extends Controller
      */
     public function destroy($id)
     {
-        $department = App\Department::find($id);
-        $department->delete();
-
-        return redirect()->route('department.index');
+        //
     }
 }

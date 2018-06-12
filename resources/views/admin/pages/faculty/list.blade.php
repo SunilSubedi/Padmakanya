@@ -5,6 +5,7 @@
 <form method="POST" action="{{ route('faculty.store')}}">
     @csrf
 
+    {{ $faculties->links() }}
     <table class="table">
   <thead>
     <tr>
@@ -28,7 +29,7 @@
     @endforeach
   </tbody>
 </table>
-   
+{{ $faculties->links() }}
     <button type="submit" class="btn btn-primary">Submit</button>
   </form>
 </div>
