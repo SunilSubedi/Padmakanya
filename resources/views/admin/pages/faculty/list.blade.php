@@ -1,7 +1,7 @@
 @extends('admin.layouts.admin')
 @section('content')
 <div class="container-fluid" id="app">
-    <h2 class="text-center">Add Faculties</h2>
+    <h2 class="text-center">Faculties</h2>
 <form method="POST" action="{{ route('faculty.store')}}">
     @csrf
 
@@ -13,6 +13,7 @@
       <th scope="col">Address</th>
       <th scope="col">Contact</th>
       <th scope="col1">Designation</th>
+     
     </tr>
   </thead>
   <tbody>
@@ -22,8 +23,10 @@
       <td>{{ $faculty->id}}</td>
       <td>{{ $faculty->name }}</td>
       <td>{{ $faculty->address }}</td>
-      <td>{{ $faculty->contact }}}</td>
+      <td>{{ $faculty->contact }}</td>
       <td>{{ $faculty->designation }}</td>
+      <td><a href="{{ route('faculty.edit',$faculty->id)}}">Edit</a></td>
+      <td><a href="">Delete</a></td>
     </tr>
     @endforeach
   </tbody>

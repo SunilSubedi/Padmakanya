@@ -65,7 +65,10 @@ class FacultyController extends Controller
      */
     public function edit($id)
     {
-        //
+      $faculty = App\faculty::find($id);
+        
+      return view('admin.pages.faculty.edit')->with('faculty',$faculty);
+        
     }
 
     /**
@@ -77,7 +80,16 @@ class FacultyController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+       $faculty = App\faculty::find($id);
+
+       $faculty->name = $request->name;
+        $faculty->address = $request->address;
+        $faculty->contact =$request->contact;
+        $faculty->designation =$request->designation;
+        $faculty->save();
+
+        return redirect()->route('faculty.index');
+
     }
 
     /**
