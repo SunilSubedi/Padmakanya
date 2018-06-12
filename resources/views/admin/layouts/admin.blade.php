@@ -43,10 +43,10 @@
             </a>
             <ul class="sidenav-second-level collapse" id="collapseExamplePages">
               <li>
-                <a href="login.html">List Departments</a>
+                <a href="{{route('department.index')}}">List Departments</a>
               </li>
               <li>
-                <a href="register.html">Add Departmensts</a>
+                <a href="{{route('department.create')}}">Add Departmensts</a>
               </li>
             </ul>
           </li>

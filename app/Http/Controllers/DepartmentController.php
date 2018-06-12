@@ -14,7 +14,8 @@ class DepartmentController extends Controller
      */
     public function index()
     {
-      
+        $department = App\Department::all();
+        return view('admin.pages.department.list')->with('departments',$department);
     }
 
     /**
@@ -41,7 +42,7 @@ class DepartmentController extends Controller
         $depatment->save();
         
     
-    return redirect()->route('department.create');
+    return redirect()->route('department.index');
     ;
         
           
@@ -66,7 +67,12 @@ class DepartmentController extends Controller
      */
     public function edit($id)
     {
-        //
+
+        $department = App\Department::find($id);
+
+        
+        return view('admin.pages.department.edit')->with('department',$department);
+    
     }
 
     /**
@@ -78,7 +84,13 @@ class DepartmentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
+        $department = App\Department::find($id);
+        $department->name = $request->name;
+        $department->slug = $request->slug;
+        $department->save();
+
+        return redirect()->route('department.index');
     }
 
     /**
@@ -89,6 +101,9 @@ class DepartmentController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $department = App\Department::find($id);
+        $department->delete();
+
+        return redirect()->route('department.index');
     }
 }
