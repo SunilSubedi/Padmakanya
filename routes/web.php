@@ -21,7 +21,7 @@ Route::get('/', function () {
 
 Route::prefix('admin')->group(function () {
     Route::get('/', 'AdminController@index');
-   Route::resource('department', 'DepartmentController')->middleware('auth');;
+   Route::resource('department', 'DepartmentController');
    Route::resource('faculty', 'FacultyController')->middleware('auth');;
    Route::resource('notice','NoticeController')->middleware('auth');;
 });
