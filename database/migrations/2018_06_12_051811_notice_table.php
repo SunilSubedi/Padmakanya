@@ -16,9 +16,9 @@ class NoticeTable extends Migration
         Schema::create('notices', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('u_id');
-            $table->string('description',300);
+            $table->longText('description');	
             $table->string('image');
-            $table->enum('status',['Active','Inactive']);
+            $table->enum('status',['active','inactive']);
            
         });
     }

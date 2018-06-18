@@ -26,8 +26,9 @@ class NoticeController extends Controller
      */
     public function create()
     {
-        //
-        return view('admin.pages.notice.add');
+        
+        $departments = App\Department::all();
+        return view('admin.pages.notice.add')->with('departments',$departments);
     }
 
     /**

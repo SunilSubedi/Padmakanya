@@ -7,20 +7,36 @@
     @csrf
 
     <div class="form-group">
-      <label>Description</label>
-      <input type="textarea" class="form-control" aria-describedby="emailHelp" placeholder="Enter description" name="description">
-
+        
       <label>Name</label>
-      <input type="text" class="form-control" aria-describedby="emailHelp" placeholder="Enter name" name="name">
+        <input type="text" class="form-control" aria-describedby="emailHelp" placeholder="Enter name" name="name">
+       
+       <label for="">Department</label>
+       <select name="department" id="" class="form-control">
+         @foreach ($departments as $department)
+         <option value="{{$department->id}}">{{$department->name}}</option>  
+         @endforeach
+       
+       </select>
 
-      <label>Address</label>
-      <input type="text" class="form-control" aria-describedby="emailHelp" placeholder="Enter Address" name="address">
+       <label>Description</label>
+       <textarea id="description" class="form-control" name="description"></textarea>
+               
+      <label>Status</label>
+      <select name="status" id="" class="form-control">
 
+        <option value="active">Active</option>
+        <option value="inactive">Inactive</option>
+      </select>
     </div>
     
     <button type="submit" class="btn btn-primary">Submit</button>
   </form>
 </div>
+<script>
+    CKEDITOR.replace( 'description' );
+ 
+</script>
 
 
 @endsection

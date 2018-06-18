@@ -20,6 +20,8 @@
     <!-- Styles -->
     <link href="{{ asset('css/sb-admin.css') }}" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
 </head>
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
     <!-- Navigation-->
@@ -210,5 +212,6 @@
 
     </div>
     <script src="{{ asset('js.sb-admin.min.js')}}"></script>
+    
   </body>
 </html>
