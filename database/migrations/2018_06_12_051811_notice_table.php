@@ -20,7 +20,7 @@ class NoticeTable extends Migration
             $table->longText('description');	
             $table->string('image');
             $table->enum('status',['active','inactive']);
-            $table->string('slug',20);
+        
         });
     }
 

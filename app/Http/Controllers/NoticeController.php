@@ -98,7 +98,18 @@ class NoticeController extends Controller
      */
     public function edit($id)
     {
-        //
+        $notice = App\notice::find($id);
+
+        if($notice->user_id == Auth::user()->id)
+        { 
+            return view('admin.pages.notice.edit')->with('notice',$notice);
+        }
+        else
+        {
+            return back()->with('message', 'The notice is not authorized to you');
+        }
+        
+        
     }
 
     /**
@@ -110,7 +121,24 @@ class NoticeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $notice = App\notice::find($id);
+       $notice->title = $request->title;
+        $notice->description = $request->description;
+        $notice->status =$request->status;        
+
+        if($request->hasfile('image'))
+        {
+           $name = $request->image;
+           $path= "images\\";
+           $filename = time().'.'. $name->getClientOriginalName();
+           $location = public_path($path.$filename);
+           Image::make($name)->resize(500,300)->save($location);
+           $notice->image = $filename;
+        }
+
+        $notice->save();
+
+        return redirect()->route('notice.index');
     }
 
     /**
@@ -121,6 +149,9 @@ class NoticeController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $notice = App\Notice::find($id);
+        $notice->delete();
+
+        return redirect()->route('notice.index');
     }
 }

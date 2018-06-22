@@ -3,6 +3,13 @@
 <div class="container-fluid" id="app">
     <h2 class="text-center">List Notice</h2>
 
+     @if(session('message'))
+    <div class="alert alert-danger">
+        {{ session('message') }}
+    </div>
+
+    @endif
+
     {{ $notices->links() }}
     <table class="table table-dark">
   <thead>
@@ -39,5 +46,18 @@
 
 {{ $notices->links() }}
 </div>
+
+<script>
+
+function ConfirmDelete()
+{
+var x = confirm("Are you sure you want to delete?");
+if (x)
+  return true;
+else
+  return false;
+}
+
+</script>
 
 @endsection

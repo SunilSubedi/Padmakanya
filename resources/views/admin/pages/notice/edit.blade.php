@@ -9,14 +9,32 @@
     
     <div class="form-group">
       <label>Name</label>
-      <input type="text" class="form-control" aria-describedby="emailHelp" placeholder="Enter Description" name="description" value="{{$notice->name}}">
+        <input type="text" class="form-control" aria-describedby="emailHelp" placeholder="Enter name" name="title" value="{{$notice->title}}">
+       
+      
+
+       <label>Description</label>
+       <textarea id="description" class="form-control" name="description">{{$notice->description}}</textarea>
+               
+      <label>Status</label>
+      <select name="status" id="" class="form-control">
+
+        <option value="active"<?php if($notice->status=='active') { echo 'selected="selected"' ;} ?>>
+        Active
+        </option>
+        <option value="inactive" <?php if($notice->status=='inactive') { echo 'selected="selected"' ;}?>>Inactive</option>
+      </select>
+
+      <label>Image</label>
+      <input type="file" name="image" id="" class="form-control" value="{{$notice->image}}">
     </div>
-    <div class="form-group">
-      <label>Slug</label>
-      <input type="text" class="form-control" placeholder="Slug" name="slug" value="{{$notice->slug}}">
-    </div>
+
     <button type="submit" class="btn btn-primary">Submit</button>
   </form>
 </div>
+<script>
+    CKEDITOR.replace( 'description' );
+ 
+</script>
 
 @endsection
