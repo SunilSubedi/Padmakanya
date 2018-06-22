@@ -15,14 +15,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/admin', 'AdminController@index');
+
 
 
 
 Route::prefix('admin')->group(function () {
+    Route::get('/', 'AdminController@index');
    Route::resource('department', 'DepartmentController');
-   Route::resource('faculty', 'FacultyController');
-   Route::resource('notice','NoticeController');
+   Route::resource('faculty', 'FacultyController')->middleware('auth');;
+   Route::resource('notice','NoticeController')->middleware('auth');;
 });
 
 

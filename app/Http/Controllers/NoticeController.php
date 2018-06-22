@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App;
+use Image;
+use Auth;
 
 class NoticeController extends Controller
 {
@@ -26,8 +28,9 @@ class NoticeController extends Controller
      */
     public function create()
     {
-        //
-        return view('admin.pages.notice.add');
+        
+        $departments = App\Department::all();
+        return view('admin.pages.notice.add')->with('departments',$departments);
     }
 
     /**
@@ -38,8 +41,41 @@ class NoticeController extends Controller
      */
     public function store(Request $request)
     {
-        
-        
+
+
+       if(Auth::user()->department_id == $request->department)
+       {
+       $notice = new App\Notice();
+       $notice->title = $request->name;
+       $notice->description = $request->description;
+       $notice->status = $request->status;
+       $notice->user_id = Auth::id();
+
+       if($request->hasfile('image'))
+       {
+          $name = $request->image;
+          $path= "images\\";
+          $filename = time().'.'. $name->getClientOriginalName();
+          $location = public_path($path.$filename);
+          Image::make($name)->resize(500,300)->save($location);
+          $notice->image = $filename;
+       }
+
+       $notice->save();
+       return redirect()->route('notice.create')->with('status', 'Notice  Added sucessfully');
+
+
+
+    }
+    else
+    {
+
+        return back()->withInput()->with('authmessage', 'You are not authorized to add notice');
+
+    }
+
+       
+       
 
     }
 

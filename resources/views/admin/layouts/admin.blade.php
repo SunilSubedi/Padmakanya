@@ -20,6 +20,8 @@
     <!-- Styles -->
     <link href="{{ asset('css/sb-admin.css') }}" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
 </head>
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
     <!-- Navigation-->
@@ -173,8 +175,17 @@
             </form>
           </li>
           <li class="nav-item">
-            <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
-              <i class="fa fa-fw fa-sign-out"></i>Logout</a>
+          <div class="">
+                                    <a class="" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                       LOGOUT
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
+                                </div>
           </li>
         </ul>
       </div>
@@ -201,5 +212,6 @@
 
     </div>
     <script src="{{ asset('js.sb-admin.min.js')}}"></script>
+    
   </body>
 </html>

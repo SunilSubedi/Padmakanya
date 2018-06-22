@@ -13,7 +13,7 @@
     </div>
 
     @endif
-<form method="POST" action="{{ route('department.store')}}">
+<form method="POST" action="{{ route('department.store')}}" >
     @csrf
 
     <div class="form-group">

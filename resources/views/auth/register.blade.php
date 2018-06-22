@@ -52,6 +52,25 @@
                                 @endif
                             </div>
                         </div>
+                        <div class="form-group row">
+                            <label for="department" class="col-md-4 col-form-label text-md-right">Department</label>
+
+                            <div class="col-md-6">
+                                <select name="department_id" class="form-control">
+                                    @foreach ($departments  as $department)
+                                    <option value="{{$department->id}}">{{$department->name}}</option> 
+                                    @endforeach
+                                   
+                    
+
+                                </select>
+                                @if ($errors->has('d_id'))
+                                    <span class="invalid-feedback">
+                                        <strong>{{ $errors->first('d_id') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
 
                         <div class="form-group row">
                             <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
