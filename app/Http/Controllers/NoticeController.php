@@ -38,7 +38,8 @@ class NoticeController extends Controller
      */
     public function store(Request $request)
     {
-       
+        
+        
 
     }
 
