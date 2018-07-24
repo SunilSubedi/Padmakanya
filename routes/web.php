@@ -15,7 +15,30 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/exam',function () {
+    return view('pages.exam');
+});
 
+
+Route::get('/carrer', function() {
+    return view('pages.carrer');
+});
+
+Route::get('/scholarship', function() {
+    return view('pages.scholarship');
+});
+
+Route::get('/events', function() {
+    return view('pages.events');
+});
+
+Route::get('/gallery', function() {
+    return view('pages.gallery');
+});
+
+Route::get('/contact', function() {
+    return view('pages.contact');
+});
 
 
 
