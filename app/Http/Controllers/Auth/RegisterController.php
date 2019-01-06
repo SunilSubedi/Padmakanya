@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
-
+use App;
 class RegisterController extends Controller
 {
     /*
@@ -23,6 +23,13 @@ class RegisterController extends Controller
 
     use RegistersUsers;
 
+    protected function showRegistrationForm()
+    {
+        $departments = App\Department::get();
+        return view('auth.register')->with('departments', $departments);
+
+     }
+
     /**
      * Where to redirect users after registration.
      *
@@ -37,7 +44,7 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest');
+      //  $this->middleware('guest');
     }
 
     /**

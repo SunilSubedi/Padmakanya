@@ -83,6 +83,21 @@
             </ul>
           </li>
 
+          <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Example Pages">
+            <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseExamplePagesns" data-parent="#exampleAccordion">
+              <i class="fa fa-fw fa-file"></i>
+              <span class="nav-link-text">Gallery</span>
+            </a>
+            <ul class="sidenav-second-level collapse" id="collapseExamplePagesns">
+              <li>
+                <a href="{{ route('gallery.index')}}">List Gallery</a>
+              </li>
+              <li>
+                <a href="{{ route('gallery.create')}}">Add Gallery</a>
+              </li>
+            </ul>
+          </li>
+
         </ul>
         <ul class="navbar-nav ml-auto">
           <li class="nav-item dropdown">

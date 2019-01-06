@@ -47,6 +47,9 @@ Route::prefix('admin')->group(function () {
    Route::resource('department', 'DepartmentController');
    Route::resource('faculty', 'FacultyController')->middleware('auth');;
    Route::resource('notice','NoticeController')->middleware('auth');;
+   
+  // Route::resource('gallery', 'GalleryController')->middleware('auth');
+   
 });
 
 
